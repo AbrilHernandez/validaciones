@@ -1,14 +1,58 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Bienvenido
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list no-lines>
+    <div>
+      <img src=""/>
+    </div>
+    <form [formGroup] = "validacion">
+    <ion-item>
+      <ion-label floating>Nombre</ion-label>
+      <ion-input formControlName="name" type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf= "!validacion.controls.name.valid">
+      <p>please enter a valid name</p>
+
+    </ion-item>
+
+    <ion-item> 
+        <ion-label floating>Email</ion-label>
+        <ion-input formControlName="email" type="text" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf= "!validacion.controls.email.valid">
+        <p>please enter a valid email</p>
+        </ion-item>
+
+    <ion-item> 
+        <ion-label floating>Telefono</ion-label>
+        <ion-input formControlName="telefono" type="text" [(ngModel)]= "phone"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf= "!validacion.controls.telefono.valid">
+        <p>please enter a valid phone</p>
+        </ion-item>
+  </form>
+
+    <ion-item> 
+        <ion-label floating>Comentario</ion-label>
+        <ion-input type="text" [(ngModel)]="comment"></ion-input> 
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Acepto los términos y condiciones</ion-label>
+        <ion-checkbox color="dark" checked="false"></ion-checkbox>
+      </ion-item>
+   
+      <div>
+          <button ion-button primary block large (click)="allowed()">Ingresar</button>
+        </div>
+  </ion-list>
 </ion-content>
